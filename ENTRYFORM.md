@@ -48,6 +48,7 @@ User has ability to check how module works in following way. There are two prede
 `admin_user` granted with Sitecore Administrator right and `regular_user` has permishion to logic and view content:
 ![Admin User](docs/images/admin_user.png?raw=true "Admin User")
 ![Regular User](docs/images/regular_user.png?raw=true "Regular User")
+
 While you login with one of the predefined users you can observe how content items list changed under `Product Repo`folder. And there are no `Security Rights` field assgined. 
 ![Admin User View](docs/images/admin_user_view.png?raw=true "Admin User View")
 ![Regular User View](docs/images/regular_user_view.png?raw=true "Regular User View")
