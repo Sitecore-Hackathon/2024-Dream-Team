@@ -13,16 +13,17 @@ Lets simple imagine a situation that we have some batch of products or services 
 Of course, we can *manually* setup security for the particular items via Content Editor BUT what if wee need to dial with complex and sophisticated security model represented by data from PIM (Product Information Model) repository which allocated somewhere outside Sitecore infrastructure and expose own authorization and authentification system! Exactly for this purpose I create this module and solving security integrity between Sitecore and External Security System (ESS).
 This module simply injected into Sitecore <authorization> pipeline and become solely pipe for security access decision. While we a trying to get access to specific item with base template: ***_EncourageByEntitlements***, module requested security information from External Authorization System (aka EAS) using external URN field value for interconnection between Sitecore and EAS in security decision making. 
 This module consists of middleware tiers:
- - Authorizatio
- - dsdsd
- - dsdsdsd
-As ways of improvmenmts I'd like to admire following:
- - Recursive apply security
- - Caching data
+ - IExternalAuthorizationService
+ - IExternalAuthorizationSystemProvider
+ - ISecurityModelFromExternalServer
+ - ISecurityModelFromExternalServer
+
+As a ways of improvements I'd like to admire following:
+ - Recursively apply security for related items
+ - Caching data on all levels
  - Dynamic calculation
- - Update Links table
- - add pipeline for complex data item decidions not just based on urn field
- - 
+ - Extend logic using pipeline for more complex security access decision rather than based on `Urn` field
+
 
 ## Video link
 ⟹ Provide a video highlighing your Hackathon module submission and provide a link to the video. You can use any video hosting, file share or even upload the video to this repository. _Just remember to update the link below_
