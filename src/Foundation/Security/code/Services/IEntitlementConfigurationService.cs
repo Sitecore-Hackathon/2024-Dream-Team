@@ -1,7 +1,7 @@
 ﻿namespace DreamTeam.Foundation.Security.Services
 {
-    public interface IEntitlementConfigurationService
+    public interface IEASConfigurationService
     {
-        bool IsEntitlementFeatureEnabled();
+        bool IsEASFeatureEnabled();
     }
 }

@@ -2,13 +2,13 @@
 {
     using Sitecore.Configuration;
 
-    public class EntitlementConfigurationService : IEntitlementConfigurationService
+    public class EASConfigurationService : IEASConfigurationService
     {
-        private readonly bool _EntitlementFeatureEnabled = Settings.GetBoolSetting("EntitlementFeatureEnabled", false);
+        private readonly bool _EASFeatureEnabled = Settings.GetBoolSetting("EASFeatureEnabled", false);
 
-        public bool IsEntitlementFeatureEnabled()
+        public bool IsEASFeatureEnabled()
         {
-            return _EntitlementFeatureEnabled;
+            return _EASFeatureEnabled;
         }
     }
 }

@@ -12,13 +12,13 @@ namespace DreamTeam.Foundation.Security.AccessControl
 {
     public class ExternalAuthorizationProvider : SqlAuthorizationProvider
 	{
-		private static readonly IEntitlementConfigurationService _entitlementConfigurationService;
+		private static readonly IEASConfigurationService _easConfigurationService;
 
 		private readonly IExternalAuthorizationService _externalAuthorizationService;
 
 		static ExternalAuthorizationProvider()
         {
-			_entitlementConfigurationService = ServiceLocator.ServiceProvider.GetService<IEntitlementConfigurationService>();
+			_easConfigurationService = ServiceLocator.ServiceProvider.GetService<IEASConfigurationService>();
 		}
 
 		public ExternalAuthorizationProvider(SqlDataApi api) : this(api, ServiceLocator.ServiceProvider.GetService<IExternalAuthorizationService>()) 
@@ -75,7 +75,7 @@ namespace DreamTeam.Foundation.Security.AccessControl
 
 		private static bool ShouldBeValidatedByExternalAuhtorizationProvider(AccessResult accessResult, ISecurable entity)
 		{
-			if (!_entitlementConfigurationService.IsEntitlementFeatureEnabled())
+			if (!_easConfigurationService.IsEASFeatureEnabled())
 				return false;
 
             return accessResult == null && entity is Item item && item.ID != item.TemplateID && item.Database.Name.ToLower() != "core" && !item.IsTemplateItem();

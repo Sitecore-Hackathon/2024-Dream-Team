@@ -12,7 +12,7 @@
             ServiceCollectionServiceExtensions.AddTransient<IExternalAuthorizationService, ExternalAuthorizationService>(serviceCollection);
             ServiceCollectionServiceExtensions.AddSingleton<ISecurityModelFromExternalServer, SecurityModelFromFakeExternalServer>(serviceCollection);
 
-            ServiceCollectionServiceExtensions.AddSingleton<IEntitlementConfigurationService, EntitlementConfigurationService>(serviceCollection);
+            ServiceCollectionServiceExtensions.AddSingleton<IEASConfigurationService, EASConfigurationService>(serviceCollection);
         }
     }
 }
