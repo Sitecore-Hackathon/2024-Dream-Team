@@ -1,85 +1,53 @@
+
 # Hackathon Submission Entry form
 
-> __Important__  
-> 
-> Copy and paste the content of this file into README.md or face automatic __disqualification__  
-> All headlines and subheadlines shall be retained if not noted otherwise.  
-> Fill in text in each section as instructed and then delete the existing text, including this blockquote.
-
-You can find a very good reference to Github flavoured markdown reference in [this cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet). If you want something a bit more WYSIWYG for editing then could use [StackEdit](https://stackedit.io/app) which provides a more user friendly interface for generating the Markdown code. Those of you who are [VS Code fans](https://code.visualstudio.com/docs/languages/markdown#_markdown-preview) can edit/preview directly in that interface too.
-
 ## Team name
-⟹ Write the name of your Hackathon team here
+⟹ -== Dream Team ==-
 
 ## Category
-⟹ Write the name of the selected category
+⟹ Best Module for XM/XP or XM Cloud
 
 ## Description
-⟹ Write a clear description of your hackathon entry.  
-
-  - Module Purpose
-  - What problem was solved (if any)
-    - How does this module solve it
-
-_You can alternately paste a [link here](#docs) to a document within this repo containing the description._
+⟹ For this season of Sitecore Hackathon session I decide to choose category: *Best Module for XM/XP or XM Cloud*. While some time ago I thought about Sitecore security model and a ways how to extend it. Based on a fact that security model can be build around core content elements driven by business side. 
+Lets simple imagine a situation that we have some batch of products or services which our business selling to the *end-users* (**B2C** or **B2B** selling model). Our goal (and at the same time a problem which we need to solve) distinguash products and services based on, for example, *user role* or *subscription*.
+Of course, we can *manually* setup security for the particular items via Content Editor BUT what if wee need to dial with complex and sophisticated security model represented by data from PIM (Product Information Model) repository which allocated somewhere outside Sitecore infrastructure and expose own authorization and authentification system! Exactly for this purpose I create this module and solving security integrity between Sitecore and External Security System (ESS).
+This module simply injected into Sitecore <authorization> pipeline and become solely pipe for security access decision. While we a trying to get access to specific item with base template: ***_EncourageByEntitlements***, module requested security information from External Authorization System (aka EAS) using external URN field value for interconnection between Sitecore and EAS in security decision making. 
+This module consists of middleware tiers:
+ - Authorizatio
+ - dsdsd
+ - dsdsdsd
+As ways of improvmenmts I'd like to admire following:
+ - Recursive apply security
+ - Caching data
+ - Dynamic calculation
+ - Update Links table
+ - add pipeline for complex data item decidions not just based on urn field
+ - 
 
 ## Video link
 ⟹ Provide a video highlighing your Hackathon module submission and provide a link to the video. You can use any video hosting, file share or even upload the video to this repository. _Just remember to update the link below_
 
 ⟹ [Replace this Video link](#video-link)
 
-
-
-## Pre-requisites and Dependencies
-
-⟹ Does your module rely on other Sitecore modules or frameworks?
-
-- List any dependencies
-- Or other modules that must be installed
-- Or services that must be enabled/configured
-
-_Remove this subsection if your entry does not have any prerequisites other than Sitecore_
-
 ## Installation instructions
-⟹ Write a short clear step-wise instruction on how to install your module.  
+⟹ Installation for this module requires Docker image builds:
 
-> _A simple well-described installation process is required to win the Hackathon._  
-> Feel free to use any of the following tools/formats as part of the installation:
-> - Sitecore Package files
-> - Docker image builds
-> - Sitecore CLI
-> - msbuild
-> - npm / yarn
-> 
-> _Do not use_
-> - TDS
-> - Unicorn
- 
-for example:
-
-1. Use the Sitecore Installation wizard to install the [package](#link-to-package)
-2. ...
-3. profit
-
-### Configuration
-⟹ If there are any custom configuration that has to be set manually then remember to add all details here.
-
-_Remove this subsection if your entry does not require any configuration that is not fully covered in the installation instructions already_
+ 1. Run init script for docker `docker_init.ps1`, where provide pass to the license file
+ 2. Run `up.ps1`script
+ 3. Serialized items and users will be installed as part of `up.ps1` script
+ 4. If you missed step #3, please, run `push_items.ps1` script, instead
+ 5. If you need repeat module's installlation from scratch, please, run `stop.ps1` script and `/docker/clean.ps1` script, right after previous command
 
 ## Usage instructions
-⟹ Provide documentation about your module, how do the users use your module, where are things located, what do the icons mean, are there any secret shortcuts etc.
+⟹ HOWTO instruction for this module is pretty simple. All major things are installed via SCS and deployment process. 
+User has ability to check how module works in following way. There are two predefined users both has the same `b` password:
+![Predefined Users](docs/images/predefined_users.png?raw=true "Predefined Users")
+`admin_user` granted with Sitecore Administrator right and `regular_user` has permishion to logic and view content:
+![Admin User](docs/images/admin_user.png?raw=true "Admin User")
+![Regular User](docs/images/regular_user.png?raw=true "Regular User")
+While you login with one of the predefined users you can observe how content items list changed under `Product Repo`folder. And there are no `Security Rights` field assgined. 
+![Admin User View](docs/images/admin_user_view.png?raw=true "Admin User View")
+![Regular User View](docs/images/regular_user_view.png?raw=true "Regular User View")
 
-Include screenshots where necessary. You can add images to the `./images` folder and then link to them from your documentation:
-
-![Hackathon Logo](docs/images/hackathon.png?raw=true "Hackathon Logo")
-
-You can embed images of different formats too:
-
-![Deal With It](docs/images/deal-with-it.gif?raw=true "Deal With It")
-
-And you can embed external images too:
-
-![Random](https://thiscatdoesnotexist.com/)
-
-## Comments
-If you'd like to make additional comments that is important for your module entry.
+Fake data from the code which emulate response from EAS control restriction for viewing content for each user type.
+![Regular User View](docs/images/fake_data_from_EAS.png?raw=true "Regular User View")
