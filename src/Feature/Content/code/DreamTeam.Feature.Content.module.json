@@ -8,7 +8,6 @@
             {
                 "name": "RootContentFolder",
                 "path": "/sitecore/content/Product Repo",
-                "scope": "DescendantsOnly",
                 "allowedPushOperations": "CreateAndUpdate"
             }
         ]
