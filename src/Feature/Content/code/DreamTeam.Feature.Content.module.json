@@ -1,13 +1,15 @@
 {
     "namespace": "DreamTeam.Feature.Content",
     "references": [
-        "DreamTeam.Feature.Serialization"
+        "DreamTeam.Feature.Templates"
     ],
     "items": {
         "includes": [
             {
-                "name": "Templates",
-                "path": "/sitecore/templates/Feature/DreamTeam/Content"
+                "name": "RootContentFolder",
+                "path": "/sitecore/content/Product Repo",
+                "scope": "DescendantsOnly",
+                "allowedPushOperations": "CreateAndUpdate"
             }
         ]
     }

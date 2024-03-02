@@ -87,6 +87,10 @@
       <Project>{62f665ac-0b86-4330-a15f-f7e3a7cadd7c}</Project>
       <Name>DreamTeam.Foundation.Extensions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Serialization\code\DreamTeam.Foundation.Serialization.csproj">
+      <Project>{b4cf0c95-ba06-478b-80ee-e19131276044}</Project>
+      <Name>DreamTeam.Foundation.Serialization</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
