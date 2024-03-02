@@ -45,6 +45,7 @@ As a ways of improvements I'd like to admire following:
 
 User has ability to check how module works in following way. There are two predefined users both has the same `b` password:
 ![Predefined Users](docs/images/predefined_users.png?raw=true "Predefined Users")
+
 `admin_user` granted with Sitecore Administrator right and `regular_user` has permishion to logic and view content:
 ![Admin User](docs/images/admin_user.png?raw=true "Admin User")
 ![Regular User](docs/images/regular_user.png?raw=true "Regular User")
