@@ -1,0 +1,22 @@
+{
+    "namespace": "DreamTeam.Foundation.Serialization",
+    "items": {
+      "includes": [
+        {
+          "name": "Templates",
+          "path": "/sitecore/templates/Foundation/DreamTeam",
+          "rules": [
+            {
+              "path": "/Security",
+              "scope": "SingleItem",
+              "allowedPushOperations": "createOnly"
+            },
+            {
+              "path": "*",
+              "scope": "ignored"
+            }
+          ]
+        }
+      ]
+    }
+}
