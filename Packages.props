@@ -11,16 +11,9 @@
 	<ItemGroup>
 		<PackageReference Update="Sitecore.Kernel" Version="$(PlatformVersion)" />
 		<PackageReference Update="Sitecore.Client" Version="$(PlatformVersion)" />
-		<PackageReference Update="Sitecore.Buckets" Version="$(PlatformVersion)" />
-		<PackageReference Update="Sitecore.Mvc" Version="$(PlatformVersion)" />
-		<PackageReference Update="Sitecore.ContentSearch" Version="$(PlatformVersion)" />
-		<PackageReference Update="Sitecore.ContentSearch.Linq" Version="$(PlatformVersion)" />
 		<PackageReference Update="Sitecore.Assemblies.Platform" Version="$(PlatformVersion)" />
 		<PackageReference Update="Sitecore.ItemWebApi" Version="$(PlatformVersion)" />
 		<PackageReference Update="Sitecore.Logging" Version="$(PlatformVersion)" />
-		
-		<PackageReference Update="Sitecore.ExperienceEditor" Version="$(PlatformVersion)" />
-		<PackageReference Update="Sitecore.ExperienceEditor.Speak" Version="$(PlatformVersion)" />
 	
 		<PackageReference Update="Sitecore.Services.Infrastructure" Version="$(PlatformVersion)" />
 

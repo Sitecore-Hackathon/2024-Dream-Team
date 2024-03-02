@@ -65,12 +65,6 @@
       <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Foundation\Security\code\DreamTeam.Foundation.Security.csproj">
-      <Project>{43558362-d752-9427-3300-212f0cb8a8fc}</Project>
-      <Name>DreamTeam.Foundation.Security</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
