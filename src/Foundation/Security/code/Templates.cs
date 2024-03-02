@@ -6,17 +6,17 @@ namespace DreamTeam.Foundation.Security
     {
         public struct _ExternalId
         {
-            public static readonly ID ID = new ID("{8B311DB1-DE95-42BE-BDEA-F71F3CAEA3D5}");
+            public static readonly ID ID = new ID("{46096A88-2A86-47E3-BD6B-04284331D588}");
 
             public struct Fields
             {
-                public static readonly ID Urn = new ID("{D0A309DA-6032-44E9-8331-B234CFEBB870}");
+                public static readonly ID Urn = new ID("{1A07E817-0F77-4F53-8F86-DE9127412DB4}");
             }
         }
 
         public struct _EncourageByEntitlements
         {
-            public static readonly ID ID = new ID("{30D1BE63-E408-41F7-8B5E-3E0700B791DA}");
+            public static readonly ID ID = new ID("{FFA5CF56-77E7-4C75-BC16-D9CEC80456D6}");
         }
     }
 }

@@ -1,0 +1,14 @@
+{
+    "namespace": "DreamTeam.Foundation.Security",
+    "references": [
+        "DreamTeam.Foundation.Serialization"
+    ],
+    "items": {
+        "includes": [
+            {
+                "name": "Templates",
+                "path": "/sitecore/templates/Foundation/DreamTeam/Security"
+            }
+        ]
+    }
+}
