@@ -1,0 +1,14 @@
+{
+    "namespace": "DreamTeam.Feature.Content",
+    "references": [
+        "DreamTeam.Feature.Serialization"
+    ],
+    "items": {
+        "includes": [
+            {
+                "name": "Templates",
+                "path": "/sitecore/templates/Feature/DreamTeam/Content"
+            }
+        ]
+    }
+}
