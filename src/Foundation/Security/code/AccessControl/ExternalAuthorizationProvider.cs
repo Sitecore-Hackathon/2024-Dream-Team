@@ -12,15 +12,24 @@ namespace DreamTeam.Foundation.Security.AccessControl
 {
     public class ExternalAuthorizationProvider : SqlAuthorizationProvider
 	{
-		private static readonly IExternalSecurityConfigurationService _externalSecurityConfigurationService;
+		private static readonly IEntitlementConfigurationService _entitlementConfigurationService;
+
+		private readonly IExternalAuthorizationService _externalAuthorizationService;
 
 		static ExternalAuthorizationProvider()
         {
-            _externalSecurityConfigurationService = ServiceLocator.ServiceProvider.GetService<IExternalSecurityConfigurationService>();
+			_entitlementConfigurationService = ServiceLocator.ServiceProvider.GetService<IEntitlementConfigurationService>();
 		}
 
-		public ExternalAuthorizationProvider(SqlDataApi api) : base(api) 
+		public ExternalAuthorizationProvider(SqlDataApi api) : this(api, ServiceLocator.ServiceProvider.GetService<IExternalAuthorizationService>()) 
 		{
+		}
+
+		public ExternalAuthorizationProvider(SqlDataApi api, IExternalAuthorizationService externalAuthorizationService) : base(api)
+		{
+			Assert.ArgumentNotNull(externalAuthorizationService, nameof(externalAuthorizationService));
+
+			_externalAuthorizationService = externalAuthorizationService;
 		}
 
 		/// <summary>
@@ -44,10 +53,17 @@ namespace DreamTeam.Foundation.Security.AccessControl
 				return accessResult;
 			}
 
-			//Donotate Sitecore Security with External Security Provider
+			//Donotate Sitecore Security with External Authorization System
 			if (ShouldBeValidatedByExternalAuhtorizationProvider(accessResult, entity))
 			{
-                return accessResult;
+				var extAuthServerAccessResult = _externalAuthorizationService.GetAccess(entity, account);
+
+				//TODO: Evaluate related items access
+
+				if (extAuthServerAccessResult.Permission != AccessPermission.NotSet)
+                {
+					return extAuthServerAccessResult;
+				}
 			}
 
 			accessResult = this.GetAccessResultFromCache(entity, account, accessRight) ?? this.GetAccessCore(entity, account, accessRight);
@@ -59,7 +75,7 @@ namespace DreamTeam.Foundation.Security.AccessControl
 
 		private static bool ShouldBeValidatedByExternalAuhtorizationProvider(AccessResult accessResult, ISecurable entity)
 		{
-			if (!_externalSecurityConfigurationService.IsEntitlementFeatureEnabled())
+			if (!_entitlementConfigurationService.IsEntitlementFeatureEnabled())
 				return false;
 
             return accessResult == null && entity is Item item && item.ID != item.TemplateID && item.Database.Name.ToLower() != "core" && !item.IsTemplateItem();
