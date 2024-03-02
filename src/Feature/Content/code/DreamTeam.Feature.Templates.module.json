@@ -8,12 +8,6 @@
             {
                 "name": "Templates",
                 "path": "/sitecore/templates/Feature/DreamTeam/Content"
-            },
-            {
-                "name": "RootContentFolder",
-                "path": "/sitecore/content/Product Repo",
-                "scope": "SingleItem",
-                "allowedPushOperations": "CreateOnly"
             }
         ]
     }

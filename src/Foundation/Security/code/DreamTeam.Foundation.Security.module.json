@@ -10,5 +10,12 @@
                 "path": "/sitecore/templates/Foundation/DreamTeam/Security"
             }
         ]
-    }
+    },
+    "users": [
+        {
+            "domain": "sitecore",
+            "pattern": "^*user$"
+        }
+    ]
+
 }
