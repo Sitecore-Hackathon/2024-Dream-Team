@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DreamTeam.Foundation.Serialization.module.json" />
+    <Content Include="DreamTeam.Feature.Serialization.module.json" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

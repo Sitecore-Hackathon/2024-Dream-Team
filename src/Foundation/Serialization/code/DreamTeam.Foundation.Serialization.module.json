@@ -3,19 +3,10 @@
     "items": {
       "includes": [
         {
-          "name": "Templates",
+          "name": "Foundation.Templates",
           "path": "/sitecore/templates/Foundation/DreamTeam",
-          "rules": [
-            {
-              "path": "/Security",
-              "scope": "SingleItem",
-              "allowedPushOperations": "createOnly"
-            },
-            {
-              "path": "*",
-              "scope": "ignored"
-            }
-          ]
+          "scope": "SingleItem",
+          "allowedPushOperations": "CreateOnly"
         }
       ]
     }
