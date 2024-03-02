@@ -5,12 +5,13 @@ namespace DreamTeam.Foundation.Extensions
 {
     public static class EnumarableExtensions
     {
-        public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
+        public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, TKey targetKeyValue)
         {
             HashSet<TKey> seenKeys = new HashSet<TKey>();
+
             foreach (TSource element in source)
             {
-                if (seenKeys.Add(keySelector(element)))
+                if (seenKeys.Add(targetKeyValue))
                 {
                     yield return element;
                 }
