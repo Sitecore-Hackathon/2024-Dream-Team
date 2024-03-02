@@ -1,10 +1,9 @@
-﻿using Sitecore.Data.Items;
-using Sitecore.Security.Accounts;
-using System.Linq;
+﻿using DreamTeam.Foundation.Security.CustomAuthSystemCore;
+using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
-using System.Security.Claims;
-using DreamTeam.Foundation.Security.CustomAuthSystemCore;
+using Sitecore.Security.Accounts;
 using System;
+using System.Linq;
 
 namespace DreamTeam.Foundation.Security.Providers
 {
@@ -18,14 +17,13 @@ namespace DreamTeam.Foundation.Security.Providers
             //Only Admin use has full granted access
             if (user.IsAdministrator)
             {
+                Log.Audit($"[ExternalAuthorizationSystemProvider]:: user is admin", this);
                 return true;
             }
 
-            //TODO
-            var userIdentity = user.Identity as ClaimsIdentity;
+            var externalSecurityModel = SecurityEntitlement.GetSecurityModelByUserId(user);
 
-            var externalSecurityModel = SecurityEntitlement.GetSecurityModelByUserId(userIdentity);
-
+            //return decidion based on external security model and mapped with 'Urn' field value
             return externalSecurityModel?.Entities?
                         .FirstOrDefault(securityModel => entity[Templates._ExternalId.Fields.Urn]
                         .StartsWith(securityModel.Urn, StringComparison.InvariantCultureIgnoreCase))?.IsAllowed ?? false;

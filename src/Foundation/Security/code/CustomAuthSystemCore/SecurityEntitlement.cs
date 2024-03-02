@@ -3,8 +3,8 @@
     using Sitecore.Diagnostics;
     using Sitecore.DependencyInjection;
     using Microsoft.Extensions.DependencyInjection;
-    using System.Security.Claims;
     using DreamTeam.Foundation.Security.Model;
+    using Sitecore.Security.Accounts;
 
     public static class SecurityEntitlement
     {
@@ -21,27 +21,21 @@
             _lockObj = new object();
         }
 
-        public static SecurityEntitlementModel GetSecurityModelByUserId(ClaimsIdentity userIdentity)
+        public static SecurityEntitlementModel GetSecurityModelByUserId(User user)
         {
-            Assert.ArgumentNotNull(userIdentity, nameof(userIdentity));
-            //TODO
-            var azureADUserId = userIdentity.FindFirst("oid")?.Value;
-            if (!string.IsNullOrWhiteSpace(azureADUserId))
-            {
-                lock (_lockObj)
-                {
-                    return TransferRequestToFakeSecurityEntitlementModel(userIdentity) ?? new SecurityEntitlementModel();
-                }
-            }
+            Assert.ArgumentNotNull(user, nameof(user));
 
-            return null;
+            lock (_lockObj)
+            {
+                return TransferRequestToFakeSecurityEntitlementModel(user) ?? new SecurityEntitlementModel();
+            }
         }
 
-        private static SecurityEntitlementModel TransferRequestToFakeSecurityEntitlementModel(ClaimsIdentity userIdentity)
+        private static SecurityEntitlementModel TransferRequestToFakeSecurityEntitlementModel(User user)
         {
-            Assert.ArgumentNotNull(userIdentity, nameof(userIdentity));
+            Assert.ArgumentNotNull(user, nameof(user));
 
-            return _securityModelServerRequester.GetSecuirtyEntitiesByUserId(userIdentity);
+            return _securityModelServerRequester.GetSecuirtyEntitiesByUserId(user);
         }
     }
 }

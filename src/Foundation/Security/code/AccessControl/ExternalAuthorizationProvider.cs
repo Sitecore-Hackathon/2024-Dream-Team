@@ -56,6 +56,7 @@ namespace DreamTeam.Foundation.Security.AccessControl
 			//Donotate Sitecore Security with External Authorization System
 			if (ShouldBeValidatedByExternalAuhtorizationProvider(accessResult, entity))
 			{
+                Log.Audit($"Performing operation for item: {(entity as Item).ID} and name: {(entity as Item).Name}", this);
 				var extAuthServerAccessResult = _externalAuthorizationService.GetAccess(entity, account);
 
 				//TODO: Evaluate related items access

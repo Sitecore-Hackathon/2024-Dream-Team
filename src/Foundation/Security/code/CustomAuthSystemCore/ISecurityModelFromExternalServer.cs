@@ -1,10 +1,10 @@
 ﻿namespace DreamTeam.Foundation.Security.CustomAuthSystemCore
 {
     using DreamTeam.Foundation.Security.Model;
-    using System.Security.Claims;
+    using Sitecore.Security.Accounts;
 
     public interface ISecurityModelFromExternalServer
     {
-        SecurityEntitlementModel GetSecuirtyEntitiesByUserId(ClaimsIdentity userIdentity);
+        SecurityEntitlementModel GetSecuirtyEntitiesByUserId(User user);
     }
 }

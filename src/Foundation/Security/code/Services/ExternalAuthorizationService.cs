@@ -25,8 +25,12 @@ namespace DreamTeam.Foundation.Security.Services
                 //TODO: Possible to place caching mehanism
 
                 var user = (account as User) ?? User.FromName(account.Name, false);
+
+                Log.Info($"[ExternalAuthorizationService]:: username: {user.Name} or user.LocalName: {user.LocalName}", this);
+
                 var isPermit = _externalAuthorizationProvider.IsUserAuthorizedToGetSpecificItemAccess(entityItem, user);
 
+                Log.Info($"[ExternalAuthorizationService]:: permit: {isPermit}", this);
                 var accessResult = isPermit ? new AccessResult(AccessPermission.Allow, new AccessExplanation(Constants.GrantAccessExplanationByEAS))
                                             : new AccessResult(AccessPermission.Deny, new AccessExplanation(Constants.DenyAccessExplanationByEAS));
 
